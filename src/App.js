@@ -221,125 +221,244 @@
 
 
 
-import React,{Component} from "react";
-class MediumScore extends Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            HK1: 0,
-            HK2: 0,
-            Avg: 0,
-            Result: "",
-            Rank: "",
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleChange = (event) => {
-        let key = event.target.name;
-        let val = event.target.value;
+// import React,{Component} from "react";
+// class MediumScore extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state ={
+//             HK1: 0,
+//             HK2: 0,
+//             Avg: 0,
+//             Result: "",
+//             Rank: "",
+//         };
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleChange = (event) => {
+//         let key = event.target.name;
+//         let val = event.target.value;
  
-        this.setState({ [key]: val });
-        this.setState((state) => ({
-            Avg: parseFloat((parseFloat(state.HK1) + parseFloat(state.HK2))/2),
-        }));
-        this.setResult();
-        this.setRank();
-    };
-    handleSubmit = (event) => {
-        event.preventDefault();
-        alert("Bạn là học sinh " + this.state.Rank);
-    };
-    setResult = () => {
-        if (this.state.Avg > 3.5) this.setState({Result: "Được lên lớp"});
-        else this.setState({Result: "Ở lại lớp"});
-    };
-    setRank = () => {
-        if (this.state.Avg <3.5) this.setState({Rank: "Yếu"});
-        else if (this.state.Avg <6.5) this.setState({Rank: "Trung Bình"});
-        else if (this.state.Avg <=8) this.setState({Rank: "Khá"});
-        else (this.setState ({Rank: "Giỏi"}));
-    };
-    render() {
-        return (
-            <div className="container">
-                <h3>Kết quả học tập</h3>
-                <form onSubmit={this.handleSubmit} className="was-validated">
-                    <div className="form-group">
-                        <label htmlFor="HK1">Điểm HK1: </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="HK1"
-                            name="HK1"
-                            max={10}
-                            min={0}
-                            defaultValue={0}
-                            required
-                            onChange={this.handleChange}
-                        />
-                        <div className="invalid-feedback">Điểm không hợp lệ</div>
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="HK2">Điểm HK2: </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="HK2"
-                            name="HK2"
-                            max={10}
-                            min={0}
-                            defaultValue={0}
-                            required
-                            onChange={this.handleChange}
-                        />
-                        <div className="invalid-feedback">Điểm không hợp lệ</div>
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="HK2">Điểm Trung Bình: </label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            readOnly
-                            value={this.state.Avg}
-                        />
-                        <div className="invalid-feedback">Điểm không hợp lệ</div>
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="HK2">Kết quả: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            defaultValue={0}
-                            readOnly
-                            value={this.state.Result}
-                        />
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="HK2">Xếp loại: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            defaultValue={0}
-                            readOnly
-                            value={this.state.Rank}
-                        />
-                    </div>
-                    <button type="submit" value="Submit" className="btn btn-primary">Xem kết quả</button>
-                </form>
-            </div>
+//         this.setState({ [key]: val });
+//         this.setState((state) => ({
+//             Avg: parseFloat((parseFloat(state.HK1) + parseFloat(state.HK2))/2),
+//         }));
+//         this.setResult();
+//         this.setRank();
+//     };
+//     handleSubmit = (event) => {
+//         event.preventDefault();
+//         alert("Bạn là học sinh " + this.state.Rank);
+//     };
+//     setResult = () => {
+//         if (this.state.Avg > 3.5) this.setState({Result: "Được lên lớp"});
+//         else this.setState({Result: "Ở lại lớp"});
+//     };
+//     setRank = () => {
+//         if (this.state.Avg <3.5) this.setState({Rank: "Yếu"});
+//         else if (this.state.Avg <6.5) this.setState({Rank: "Trung Bình"});
+//         else if (this.state.Avg <=8) this.setState({Rank: "Khá"});
+//         else (this.setState ({Rank: "Giỏi"}));
+//     };
+//     render() {
+//         return (
+//             <div className="container">
+//                 <h3>Kết quả học tập</h3>
+//                 <form onSubmit={this.handleSubmit} className="was-validated">
+//                     <div className="form-group">
+//                         <label htmlFor="HK1">Điểm HK1: </label>
+//                         <input
+//                             type="number"
+//                             className="form-control"
+//                             id="HK1"
+//                             name="HK1"
+//                             max={10}
+//                             min={0}
+//                             defaultValue={0}
+//                             required
+//                             onChange={this.handleChange}
+//                         />
+//                         <div className="invalid-feedback">Điểm không hợp lệ</div>
+//                     </div>
+//                     <div className="form-group">
+//                     <label htmlFor="HK2">Điểm HK2: </label>
+//                         <input
+//                             type="number"
+//                             className="form-control"
+//                             id="HK2"
+//                             name="HK2"
+//                             max={10}
+//                             min={0}
+//                             defaultValue={0}
+//                             required
+//                             onChange={this.handleChange}
+//                         />
+//                         <div className="invalid-feedback">Điểm không hợp lệ</div>
+//                     </div>
+//                     <div className="form-group">
+//                     <label htmlFor="HK2">Điểm Trung Bình: </label>
+//                         <input
+//                             type="number"
+//                             className="form-control"
+//                             readOnly
+//                             value={this.state.Avg}
+//                         />
+//                         <div className="invalid-feedback">Điểm không hợp lệ</div>
+//                     </div>
+//                     <div className="form-group">
+//                     <label htmlFor="HK2">Kết quả: </label>
+//                         <input
+//                             type="text"
+//                             className="form-control"
+//                             defaultValue={0}
+//                             readOnly
+//                             value={this.state.Result}
+//                         />
+//                     </div>
+//                     <div className="form-group">
+//                     <label htmlFor="HK2">Xếp loại: </label>
+//                         <input
+//                             type="text"
+//                             className="form-control"
+//                             defaultValue={0}
+//                             readOnly
+//                             value={this.state.Rank}
+//                         />
+//                     </div>
+//                     <button type="submit" value="Submit" className="btn btn-primary">Xem kết quả</button>
+//                 </form>
+//             </div>
+//         );
+//     }
+// }
+
+// class App extends Component {
+//    render()
+//    {
+//      return (
+//        <div>
+//          <MediumScore></MediumScore>
+//        </div>
+//     );
+//    }
+//  }
+//  export default App;
+
+
+
+import React, { Component } from 'react';
+
+class App extends Component {
+    constructor (props){
+        super (props);
+        this.state = {
+           hk1: 0,
+           hk2: 0,
+           MediumScore: '',
+           academicPower: '',
+           KQ: ''
+       };
+    }
+    myChangeHandler=(event) => {
+        let key = event.target.name; // lay gia tri cua the input
+        let value = event.target.value; // lay gia tri cua the input
+        this.setState ({
+            //firstName: event.target.value,
+            //password: event.target.value // cho phep lay gia tri cacoinput type=text
+            [key]: value
+        });
+    }
+    mySubmitHandler=(event) => {
+            event.preventDefault();
+            let hk1 = this.state.hk1;
+            let hk2 = this.state.hk2;
+            let Medium = 0;
+            if (!Number (hk1) || !Number (hk2)){
+                alert ("Score semester must beanumber");
+            }else{
+                Medium= (parseFloat(hk1) + parseFloat(hk2))/2;
+                this.setState ({MediumScore:Medium});
+            if (Medium >= 9){
+                this.setState ({KQ: "HSG"});
+                this.setState ({academicPower: "Được lên lớp"});
+            }
+            else if (Medium>=7 && Medium<9){
+                this.setState ({KQ: "HSK"});
+                this.setState ({academicPower: "Được lên lớp"});
+            }
+            else if (Medium>=5 && Medium<7){
+                this.setState ({KQ: "HSTB"});
+                this.setState ({academicPower: "Được lên lớp"});
+            }
+            else{
+                this.setState({KQ: "HSY"});
+                this.setState({academicPower: "Không được lên lớp"});
+            }
+        }
+        console.log (event);
+    }
+    render(){
+        return(
+            <form name="form1" onSubmit={this.mySubmitHandler}>
+                <table width={670} height={177} border={0} align="center" bgcolor="#ffcccc">
+                    <tbody>
+                        <tr bgcolor>
+                            <td colSpan={2} align="center" bgcolor="ff0099">
+                                <font color size={5}>
+                                    <b>KẾT QUẢ HỌC TẬP</b>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width={125}><span>Điểm HK1: </span></td>
+                            <td width={261}>
+                                <label>
+                                    <input name="hk1" type="number" min="0" max="10" size={20} onChange={this.myChangeHandler} />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width={125}><span>Điểm HK2: </span></td>
+                            <td width={261}>
+                                <label>
+                                    <input name="hk2" type="number" min="0" max="10" onChange={this.myChangeHandler} />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Điểm trung bình: </span></td>
+                            <td width={261}>
+                                <label>
+                                    <input name="MediumScore" type="text" readOnly value={this.state.MediumScore} onChange={this.myChangeHandler} />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Kết quả: </span></td>
+                            <td>
+                                <label>
+                                    <input name="ketqua" type="text" value={this.state.KQ} />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Xếp loại học lực</span></td>
+                            <td>
+                                <label>
+                                    <input name="x" type="text" value={this.state.academicPower} />
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2} align="center">
+                                <input type="submit" defaultValue="Xem kết quả" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         );
     }
 }
 
-class App extends Component {
-   render()
-   {
-     return (
-       <div>
-         <MediumScore></MediumScore>
-       </div>
-    );
-   }
- }
- export default App;
+export default App;
