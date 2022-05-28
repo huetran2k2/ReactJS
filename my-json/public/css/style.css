@@ -1,0 +1,64 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+.row-header{
+    display: flex;
+}
+.col-auto {
+    margin-top: 30px;
+
+}
+.container-fluid{
+    margin-top: 20px;
+    
+}
+.img-logo{
+    height: 50px;
+}
+.container-fluid nav li a:hover{
+    background-color: rgb(184, 27, 16);
+}
+.menu{
+    margin-top: 20px;
+}
+.navbar-expand-lg{
+    background-color: rgb(24,92,152);
+}
+nav ul li a{
+    font-weight: 700;
+  }
+.bg-img{
+      width:510px;
+
+  }
+.vovvn-body .articles-list {
+    list-style: none;}
+.img{
+    width: 220px;
+}
+.card-title {
+    font-size: .975rem;
+    font-weight: 700;
+}
+.mua{
+    width: 130px;
+}
+
+p {
+    font-weight: 600;
+    font-size:.975rem ;
+}
+.title{
+    color: black;
+}
+.title:hover{
+   text-decoration: none;
+}
+.row1{
+    display: grid;
+    grid-template-columns: 48% 22% 30%;
+}
