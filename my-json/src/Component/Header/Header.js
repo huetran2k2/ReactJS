@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link } from "react-router-dom"
 
 class Header extends Component {
     render() {
@@ -48,10 +49,10 @@ class Header extends Component {
               <div className=" containe-fluid collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                   <li className="nav-item active">
-                    <a className="nav-link" href="#">Chính trị</a>
+                    <Link className="nav-link" to={"admin"}>Admin</Link>
                   </li>
                   <li className="nav-item active">
-                    <a className="nav-link" href="#">Kinh tế</a>
+                  <Link className="nav-link" to={"/"}>Home</Link>
                   </li>
                   <li className="nav-item active dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

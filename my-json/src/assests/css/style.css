@@ -60,5 +60,8 @@ p {
 }
 .row1{
     display: grid;
-    grid-template-columns: 48% 22% 30%;
+    /* grid-template-columns: 48% 22% 30%; */
+}
+.rowLSN{
+    display: flex;
 }
